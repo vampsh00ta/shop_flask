@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <input type="text">
+    <button>add</button>
+    <button>delete</button>
+
+    
+</body>
+<script>
+    const add = document.querySelectorAll("button")[0];
+    const del = document.querySelectorAll("button")[1];
+
+    
+    add.addEventListener("click",()=>{
+        const product_id = document.querySelectorAll('input')[0].value;
+        const count = document.querySelectorAll('input')[1].value;
+        data = {product_id:product_id,count:count}
+    
+        $.ajax({
+            type: "POST",
+            url: "/api/v1/addToBasket",
+            dataType:"json",
+            contentType: 'application/json',
+
+            data: JSON.stringify(data),
+            credentials:'include',
+            success:(response)=>{
+                console.log(response);
+        }
+            
+       
+        });
+        
+    })
+    del.addEventListener("click",()=>{
+        const product_id = document.querySelectorAll('input')[0].value;
+        const count = document.querySelectorAll('input')[1].value;
+        data = {product_id:product_id,count:count}
+    
+        $.ajax({
+            type: "DELETE",
+            url: "/api/v1/deleteFromBasket",
+            dataType:"json",
+            contentType: 'application/json',
+
+            data: JSON.stringify(data),
+            credentials:'include',
+            success:(response)=>{
+                console.log(response);
+        }
+            
+       
+        });
+        
+    })
+
+</script>
+</html>
