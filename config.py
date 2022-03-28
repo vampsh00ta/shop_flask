@@ -23,7 +23,7 @@ CORS(app)
 db = SQLAlchemy(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///goods.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'penis'
+app.config['SECRET_KEY'] = 'sad'
 app.config['EXTEND_EXISTING'] = True
 
 
